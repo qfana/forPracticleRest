@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import router from './Router.js';
+import fileUpload from 'express-fileupload';
 
 const PORT = 7788;
 const DB_URL = 'mongodb+srv://qfana2123:TWiTwlbrrp8qgwZ3@cluster0.9eyu7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
@@ -8,6 +9,8 @@ const DB_URL = 'mongodb+srv://qfana2123:TWiTwlbrrp8qgwZ3@cluster0.9eyu7.mongodb.
 const app = express();
 
 app.use(express.json()); // Парсинг передаваемой информации, преобразовывает в JSON формат
+app.use(express.static('static'));
+app.use(fileUpload({}));
 app.use('/api', router);
 
 
